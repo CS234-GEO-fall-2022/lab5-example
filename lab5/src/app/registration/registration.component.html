@@ -1,0 +1,89 @@
+<h1>Registration</h1>
+<form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-item">
+        <label class="label" for="name">Name</label>
+        <div>
+            <input type="text" name="name" id="name" formControlName="name">
+            <div class="validation-error">
+                <span *ngIf="name.errors?.['pattern'] && isSubmitted"> * only letters are allowed </span>
+                <span *ngIf="name.errors?.['required'] && isSubmitted"> * Mandatory field </span>
+                <span *ngIf="name.errors?.['minlength'] && isSubmitted"> * Min length 2 letters </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="surname">Surname</label>
+        <div>
+            <input type="text" name="surname" id="surname" formControlName="surname">
+            <div class="validation-error">
+                <span *ngIf="surname.errors?.['pattern'] && isSubmitted"> * only letters are allowed</span>
+                <span *ngIf="surname.errors?.['minlength'] && isSubmitted"> * Min length 2 letters</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="city">City</label>
+        <select formControlName="city">
+            <option *ngFor="let city of cityList" [ngValue]="city">
+                {{city}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="phoneNumber">Phone number</label>
+        <div>
+            <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber">
+            <div class="validation-error">
+                <span *ngIf="phoneNumber.errors?.['pattern'] && isSubmitted"> * incorrect phone number format </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="email">Email</label>
+        <div>
+            <input type="text" name="email" id="email" formControlName="email">
+
+            <div class="validation-error">
+                <span *ngIf="email.errors?.['required'] && isSubmitted"> * Mandatory field </span>            
+                <span *ngIf="email.errors?.['email'] && isSubmitted"> * incorrect email format </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="password">Password</label>
+        <div>
+            <input type="text" name="password" id="password" formControlName="password">
+            <div class="validation-error">
+                <span *ngIf="password.errors?.['required'] && isSubmitted"> * Mandatory field </span>            
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label class="label" for="confirmPassword">Confirm password</label>
+        <div>
+            <input type="text" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword">
+            <div class="validation-error">
+                <span *ngIf="confirmPassword.errors?.['required'] && isSubmitted"> * Mandatory field </span>            
+                <div class="validation-error" *ngIf="registrationForm.errors?.['passwordMismatch'] && isSubmitted">Password does not match</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <div>
+            <input class="checkbox-input" type="checkbox" formControlName="agreeWithTermsAndConditions">
+            <label for="agreeWithTermsAndConditions">I agree with  Terms and Conditions and Privacy Policy</label>
+            <div class="validation-error">
+                <span *ngIf="agreeWithTermsAndConditions.errors?.['required'] && isSubmitted"> * In order to register you need to read the Terms and Conditions and Privacy Policy and confirm that you agree. </span>            
+            </div>
+        </div>
+    </div>
+
+    <button class="button" type="submit">submit</button>
+</form>

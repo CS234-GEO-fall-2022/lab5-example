@@ -1,0 +1,41 @@
+.button{
+    margin: 20px 0;
+    width: 100px;
+    padding: 8px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-item{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.form{
+    background: cadetblue; 
+    padding: 10px;
+}
+
+input{
+    padding: 4px;
+    border-radius: 8px;
+    border: none;
+    width: 200px;
+}
+
+.label{
+    width: 120px;
+}
+
+.validation-error{
+    color: #930505;
+}
+
+.disabled-button{
+    opacity: 50%;
+}

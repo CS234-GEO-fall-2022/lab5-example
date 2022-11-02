@@ -1,0 +1,38 @@
+<h1>Subscription</h1>
+<form #subscribtionForm="ngForm" (ngSubmit)="onSubmit(subscribtionForm)" class="form">
+  <div class="form-item">
+      <label class="label" for="name">Name</label>
+      <div>
+        <input required minlength="2" pattern="[A-Za-z]+$" name="name" type="text" ngModel #name="ngModel">
+        <div class="validation-error">
+          <span *ngIf="name.errors?.['required']"> * Mandatory field </span>
+          <span *ngIf="name.errors?.['minlength']"> * Min length 2 letters </span>
+          <span *ngIf="name.errors?.['pattern']"> * only letters are allowed </span>
+        </div>
+      </div>
+  </div>
+
+  <div class="form-item">
+      <label class="label" for="surname">Surname</label>
+      <div>
+        <input minlength="2" pattern="[A-Za-z]+$" name="surname" type="text" ngModel  #surname="ngModel">
+        <div class="validation-error">
+            <span *ngIf="surname.errors?.['pattern']"> * only letters are allowed </span>
+            <span *ngIf="surname.errors?.['minlength']"> * Min length 2 letters </span>
+         </div>
+      </div>
+  </div>
+
+  <div class="form-item">
+      <label class="label" for="email">Email</label>
+      <div>
+        <input required email name="email" type="text" ngModel #email="ngModel">
+        <div class="validation-error">
+          <span *ngIf="email.errors?.['required']"> * Mandatory field </span>
+          <span *ngIf="email.errors?.['email']"> * incorrect email format </span>
+          <span *ngIf="email.errors?.['minlength']"> * Min length 2 letters </span>
+       </div>
+      </div>
+  </div>
+  <button [disabled]="!subscribtionForm.valid" [ngClass]="{'disabled-button': !subscribtionForm.valid}" class="button" type="submit">submit</button>
+</form>
